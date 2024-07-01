@@ -7,10 +7,7 @@ on:
     branches: ["master"]
 
 jobs:
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/master
   test:
     runs-on: ubuntu-latest
     steps:
@@ -27,29 +24,14 @@ jobs:
     - name: Create-DB
       run: docker-compose up -d
 
-<<<<<<< HEAD
-      - name: Build-db
-        run: docker-compose build
-
-      - name: create-db
-        run: docker-compose up -d
-
-=======
     - name: Test
       run: go test -v main_test.go
       
   
->>>>>>> refs/remotes/origin/master
   build:
     needs: test
     runs-on: ubuntu-latest
     steps:
-<<<<<<< HEAD
-      - uses: actions/checkout@v4
-      - name: Test
-        run: go test -v main_test.go
-=======
     - uses: actions/checkout@v4
     - name: Build
       run: go build -v main.go
->>>>>>> refs/remotes/origin/master
