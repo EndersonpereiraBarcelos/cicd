@@ -15,18 +15,21 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
-          go-version: "1.20"
+          go-version: 1.18
 
-      - name: Build-db
+      - name: Build-DB
         run: docker-compose build
 
-      - name: create-db
+      - name: Create-DB
         run: docker-compose up -d
+
+      - name: Test
+        run: go test -v main_test.go
 
   build:
     needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Test
-        run: go test -v main_test.go
+      - name: Build
+        run: go build -v main.go
